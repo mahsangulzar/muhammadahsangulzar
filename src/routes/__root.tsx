@@ -1,52 +1,57 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 
-import { Toaster } from '@/components/ui/sonner'
-import { TooltipProvider } from '@/components/ui/tooltip'
-import { NotFoundPage } from '@/components/error-pages'
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { NotFoundPage } from "@/components/error-pages";
 
-import '../styles.css'
+import "../styles.css";
 
-const siteName = 'Netlify App'
-const siteDescription = 'A Netlify web app'
+const siteName = "Muhammad Ahsan Gulzar | Digital Marketing & Medical Billing";
+const siteDescription =
+  "Digital marketing strategy, SEO, paid advertising, and medical billing services by Muhammad Ahsan Gulzar.";
 
 export const Route = createRootRoute({
   head: () => ({
+    links: [
+      { rel: "canonical", href: "https://muhammadahsangulzar.netlify.app/" },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+    ],
     meta: [
       {
-        charSet: 'utf-8',
+        charSet: "utf-8",
       },
       {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
       },
       {
         title: siteName,
       },
       {
-        name: 'description',
+        name: "description",
         content: siteDescription,
       },
       {
-        property: 'og:title',
+        property: "og:title",
         content: siteName,
       },
       {
-        property: 'og:description',
+        property: "og:description",
         content: siteDescription,
       },
       {
-        property: 'og:type',
-        content: 'website',
+        property: "og:type",
+        content: "website",
       },
       {
-        name: 'twitter:card',
-        content: 'summary_large_image',
+        name: "twitter:card",
+        content: "summary_large_image",
       },
     ],
   }),
   shellComponent: RootDocument,
   notFoundComponent: NotFoundPage,
-})
+});
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
@@ -60,5 +65,5 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
-  )
+  );
 }

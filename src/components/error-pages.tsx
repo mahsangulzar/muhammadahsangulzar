@@ -2,8 +2,8 @@ import {
   Link,
   useRouter,
   type ErrorComponentProps,
-} from '@tanstack/react-router'
-import { Button } from '@/components/ui/button'
+} from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 
 export function NotFoundPage() {
   return (
@@ -21,11 +21,11 @@ export function NotFoundPage() {
         </Button>
       </div>
     </main>
-  )
+  );
 }
 
 export function RouteErrorPage({ reset }: ErrorComponentProps) {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <main className="grid min-h-svh place-items-center px-6 py-16">
@@ -39,8 +39,8 @@ export function RouteErrorPage({ reset }: ErrorComponentProps) {
         <div className="flex flex-wrap justify-center gap-3">
           <Button
             onClick={() => {
-              void router.invalidate()
-              reset()
+              void router.invalidate();
+              reset();
             }}
           >
             Try again
@@ -51,5 +51,5 @@ export function RouteErrorPage({ reset }: ErrorComponentProps) {
         </div>
       </div>
     </main>
-  )
+  );
 }

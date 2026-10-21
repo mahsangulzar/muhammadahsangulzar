@@ -7,23 +7,23 @@ The example validates before submission, links field errors to the input, disabl
 After implementing your own `/api/contact` handler, connect it like this:
 
 ```tsx
-import { ValidatedForm } from '@/examples/validated-form'
+import { ValidatedForm } from "@/examples/validated-form";
 
 export function ContactForm() {
   return (
     <ValidatedForm
       onSubmit={async (values) => {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(values),
-        })
+        });
         if (!response.ok) {
-          throw new Error('Submission failed')
+          throw new Error("Submission failed");
         }
       }}
     />
-  )
+  );
 }
 ```
 

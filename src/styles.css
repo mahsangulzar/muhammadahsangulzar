@@ -1,6 +1,6 @@
-@import 'tailwindcss' source('../');
+@import "tailwindcss" source("../");
 
-@import 'tw-animate-css';
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -13,12 +13,13 @@ body {
 
 code {
   font-family:
-    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 :root {
-  --font-body: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-heading: 'Sora', ui-sans-serif, system-ui, sans-serif;
+  --font-body:
+    "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: "Sora", ui-sans-serif, system-ui, sans-serif;
   --content-width: 76rem;
   --reading-width: 42rem;
   /* Brand palette: deep navy, black, white, electric blue; teal for healthcare */
@@ -149,11 +150,7 @@ html {
 
 /* Frosted glass surface used for cards and the nav bar */
 .glass {
-  background: linear-gradient(
-    145deg,
-    oklch(1 0 0 / 0.07),
-    oklch(1 0 0 / 0.02)
-  );
+  background: linear-gradient(145deg, oklch(1 0 0 / 0.07), oklch(1 0 0 / 0.02));
   border: 1px solid oklch(1 0 0 / 0.1);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -184,9 +181,21 @@ html {
 /* Slowly drifting colour blobs behind the hero */
 .hero-glow {
   background:
-    radial-gradient(40% 50% at 20% 30%, oklch(0.55 0.2 255 / 0.45), transparent 70%),
-    radial-gradient(35% 45% at 80% 20%, oklch(0.6 0.15 220 / 0.3), transparent 70%),
-    radial-gradient(45% 50% at 60% 85%, oklch(0.45 0.18 270 / 0.35), transparent 70%);
+    radial-gradient(
+      40% 50% at 20% 30%,
+      oklch(0.55 0.2 255 / 0.45),
+      transparent 70%
+    ),
+    radial-gradient(
+      35% 45% at 80% 20%,
+      oklch(0.6 0.15 220 / 0.3),
+      transparent 70%
+    ),
+    radial-gradient(
+      45% 50% at 60% 85%,
+      oklch(0.45 0.18 270 / 0.35),
+      transparent 70%
+    );
   background-size: 160% 160%;
   animation: drift 18s ease-in-out infinite alternate;
 }

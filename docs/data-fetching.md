@@ -5,43 +5,43 @@ Use a route loader for data needed to render a page. Use a server function when 
 This example requires you to configure `ITEMS_API_URL` with your own server's absolute URL. It doesn't add a data source to Basic.
 
 ```ts
-import { createServerFn } from '@tanstack/react-start'
-import { z } from 'zod'
+import { createServerFn } from "@tanstack/react-start";
+import { z } from "zod";
 
-const itemsSchema = z.array(z.object({ id: z.string(), name: z.string() }))
+const itemsSchema = z.array(z.object({ id: z.string(), name: z.string() }));
 
-export const getItems = createServerFn({ method: 'GET' }).handler(async () => {
-  const url = process.env.ITEMS_API_URL
-  if (!url) throw new Error('ITEMS_API_URL is required')
+export const getItems = createServerFn({ method: "GET" }).handler(async () => {
+  const url = process.env.ITEMS_API_URL;
+  if (!url) throw new Error("ITEMS_API_URL is required");
 
-  const response = await fetch(url)
-  if (!response.ok) throw new Error('Could not load items')
-  return itemsSchema.parse(await response.json())
-})
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Could not load items");
+  return itemsSchema.parse(await response.json());
+});
 ```
 
 Put the server function in `src/lib/items.functions.ts`. A page can then use:
 
 ```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { getItems } from '@/lib/items.functions'
+import { createFileRoute } from "@tanstack/react-router";
+import { getItems } from "@/lib/items.functions";
 
-export const Route = createFileRoute('/items')({
+export const Route = createFileRoute("/items")({
   loader: () => getItems(),
   pendingComponent: () => <p role="status">Loading items…</p>,
   component: ItemsPage,
-})
+});
 
 function ItemsPage() {
-  const items = Route.useLoaderData()
-  if (items.length === 0) return <p>No items yet.</p>
+  const items = Route.useLoaderData();
+  if (items.length === 0) return <p>No items yet.</p>;
   return (
     <ul>
       {items.map((item) => (
         <li key={item.id}>{item.name}</li>
       ))}
     </ul>
-  )
+  );
 }
 ```
 

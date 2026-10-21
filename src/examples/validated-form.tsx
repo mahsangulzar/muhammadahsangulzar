@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -12,37 +12,37 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
+} from "@/components/ui/form";
 
 const emailSchema = z.object({
-  email: z.email('Enter a valid email address.'),
-})
+  email: z.email("Enter a valid email address."),
+});
 
-type EmailValues = z.infer<typeof emailSchema>
+type EmailValues = z.infer<typeof emailSchema>;
 
 export function ValidatedForm({
   onSubmit,
 }: {
-  onSubmit: (values: EmailValues) => Promise<void>
+  onSubmit: (values: EmailValues) => Promise<void>;
 }) {
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(false);
   const form = useForm<EmailValues>({
     resolver: zodResolver(emailSchema),
-    defaultValues: { email: '' },
-  })
+    defaultValues: { email: "" },
+  });
 
   const submit = form.handleSubmit(async (values) => {
-    setSubmitted(false)
-    form.clearErrors('root')
+    setSubmitted(false);
+    form.clearErrors("root");
     try {
-      await onSubmit(values)
-      setSubmitted(true)
+      await onSubmit(values);
+      setSubmitted(true);
     } catch {
-      form.setError('root', {
-        message: 'Your submission couldn’t be saved. Please try again.',
-      })
+      form.setError("root", {
+        message: "Your submission couldn’t be saved. Please try again.",
+      });
     }
-  })
+  });
 
   return (
     <Form {...form}>
@@ -81,10 +81,10 @@ export function ValidatedForm({
           )}
           {submitted && <p role="status">Your submission was saved.</p>}
           <Button type="submit" disabled={form.formState.isSubmitting}>
-            {form.formState.isSubmitting ? 'Saving…' : 'Submit'}
+            {form.formState.isSubmitting ? "Saving…" : "Submit"}
           </Button>
         </fieldset>
       </form>
     </Form>
-  )
+  );
 }

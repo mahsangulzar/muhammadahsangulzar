@@ -1,27 +1,35 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/site/Navbar";
+import { Hero } from "@/components/site/Hero";
+import { About } from "@/components/site/About";
+import { MarketingServices } from "@/components/site/MarketingServices";
+import { BillingServices } from "@/components/site/BillingServices";
+import { Portfolio } from "@/components/site/Portfolio";
+import { Skills } from "@/components/site/Skills";
+import { Experience } from "@/components/site/Experience";
+import { Testimonials } from "@/components/site/Testimonials";
+import { Contact, Footer } from "@/components/site/Contact";
+import { useScrollReveal } from "@/components/site/primitives";
 
-export const Route = createFileRoute('/')({
-  component: Home,
-})
+export const Route = createFileRoute("/")({ component: Home });
 
 function Home() {
+  useScrollReveal();
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight">
-          Hello World
-        </h1>
-        <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto px-4 text-muted-foreground">
-          Your application is ready to deploy
-        </p>
-        <p className="mt-12 text-sm text-muted-foreground">
-          Edit{' '}
-          <code className="px-2 py-1 border rounded-md bg-muted">
-            src/routes/index.tsx
-          </code>{' '}
-          to get started
-        </p>
-      </div>
-    </div>
-  )
+    <>
+      <Navbar />
+      <main id="main" tabIndex={-1}>
+        <Hero />
+        <About />
+        <MarketingServices />
+        <BillingServices />
+        <Portfolio />
+        <Skills />
+        <Experience />
+        <Testimonials />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  );
 }
