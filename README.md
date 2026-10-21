@@ -19,3 +19,4 @@ Push the source to the repository connected to the existing Netlify project, the
 Edit `src/content/site.ts`. Existing experience figures, contact details and images are retained from the supplied source. Confirm the 15-year experience claim before publication. Project examples remain explicitly marked as samples. Employment history and social profile URLs still need your details. No invented client testimonials are published.
 
 Contact messages post to `/__forms.html`; test delivery after deployment in Netlify Forms. Configure email notifications there if desired. Local development deliberately reports that messages cannot be sent.
+Portfolio updated
